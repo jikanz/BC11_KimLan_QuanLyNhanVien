@@ -47,8 +47,18 @@ function layThongTinNV(isAdd) {
     "tbChucVu",
     "(*) vui lòng nhập"
   );
-  kiemTra &= validation.kiemTraRong(luong, "tbLuongCB", "(*) vui lòng nhập");
-  kiemTra &= validation.kiemTraRong(time, "tbGiolam", "(*) vui lòng nhập");
+  kiemTra &=
+    validation.kiemTraRong(luong, "tbLuongCB", "(*) vui lòng nhập") &&
+    validation.kiemTraLuong(
+      luong,
+      "tbLuongCB",
+      "vui lòng nhập 1tr-20tr",
+      1000000,
+      20000000
+    );
+  kiemTra &=
+    validation.kiemTraRong(time, "tbGiolam", "(*) vui lòng nhập") &&
+    validation.kiemTraLuong(time, "tbGiolam", "vui lòng nhập 80-200", 80, 200);
   if (kiemTra) {
     // khởi tạo đối tượng NV
     var nhanVien = new NhanVien(
@@ -105,7 +115,6 @@ function btnSua(maNV) {
   var nhanVien = danhSachNV.suaNV(maNV);
   if (nhanVien) {
     getEle("tknv").value = nhanVien.maNV;
-    getEle("tknv").disabled = true;
     getEle("name").value = nhanVien.tenNV;
     getEle("email").value = nhanVien.email;
     getEle("password").value = nhanVien.password;

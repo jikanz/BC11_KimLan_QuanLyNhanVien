@@ -17,6 +17,15 @@ function Validation() {
       getEle(divId).innerHTML = mess;
     }
   };
+  this.kiemTraLuong = function (input, divId, mess, min, max) {
+    if (input >= min && input <= max) {
+      // đúng
+      getEle(divId).innerHTML = "";
+      return true;
+    } else {
+      getEle(divId).innerHTML = mess;
+    }
+  };
   this.kiemTraso = function (input, divId, mess) {
     var letter =
       "^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" +
