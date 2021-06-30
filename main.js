@@ -113,8 +113,11 @@ function btnXoa(maNV) {
 }
 function btnSua(maNV) {
   var nhanVien = danhSachNV.suaNV(maNV);
+  getEle("btnCapNhat").style.display = "block";
+  getEle("btnThemNV").style.display = "none";
   if (nhanVien) {
     getEle("tknv").value = nhanVien.maNV;
+    getEle("tknv").disabled = true;
     getEle("name").value = nhanVien.tenNV;
     getEle("email").value = nhanVien.email;
     getEle("password").value = nhanVien.password;
@@ -124,6 +127,11 @@ function btnSua(maNV) {
     getEle("gioLam").value = nhanVien.time;
   }
 }
+getEle("btnThem").addEventListener("click", function () {
+  getEle("btnCapNhat").style.display = "none";
+  getEle("btnThemNV").style.display = "block";
+  getEle("tknv").disabled = false;
+});
 getEle("btnCapNhat").addEventListener("click", function () {
   var nhanVien = layThongTinNV(false);
   if (nhanVien) {
